@@ -1,0 +1,15 @@
+one:
+  sf_user_id: 1
+  email: MyString
+  first_name: MyString
+  sfid: MyString
+  last_name: MyString
+  username: MyString
+
+two:
+  sf_user_id: 1
+  email: MyString
+  first_name: MyString
+  sfid: MyString
+  last_name: MyString
+  username: MyString

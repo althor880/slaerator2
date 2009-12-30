@@ -1,0 +1,27 @@
+<% title "Sf Users" %>
+
+<table>
+  <tr>
+    <th>Sf User</th>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Sfid</th>
+    <th>Last Name</th>
+    <th>Username</th>
+  </tr>
+  <% for sf_user in @sf_users %>
+    <tr>
+      <td><%=h sf_user.sf_user_id %></td>
+      <td><%=h sf_user.email %></td>
+      <td><%=h sf_user.first_name %></td>
+      <td><%=h sf_user.sfid %></td>
+      <td><%=h sf_user.last_name %></td>
+      <td><%=h sf_user.username %></td>
+      <td><%= link_to "Show", sf_user %></td>
+      <td><%= link_to "Edit", edit_sf_user_path(sf_user) %></td>
+      <td><%= link_to "Destroy", sf_user, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Sf User", new_sf_user_path %></p>

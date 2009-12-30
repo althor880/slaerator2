@@ -1,0 +1,32 @@
+<% title "Sf User" %>
+
+<p>
+  <strong>Sf User:</strong>
+  <%=h @sf_user.sf_user_id %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%=h @sf_user.email %>
+</p>
+<p>
+  <strong>First Name:</strong>
+  <%=h @sf_user.first_name %>
+</p>
+<p>
+  <strong>Sfid:</strong>
+  <%=h @sf_user.sfid %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%=h @sf_user.last_name %>
+</p>
+<p>
+  <strong>Username:</strong>
+  <%=h @sf_user.username %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_sf_user_path(@sf_user) %> |
+  <%= link_to "Destroy", @sf_user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", sf_users_path %>
+</p>
