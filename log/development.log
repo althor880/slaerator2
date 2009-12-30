@@ -1,0 +1,186 @@
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (83.7ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (44.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSalesforceCases (20091230203217)
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE "salesforce_cases" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091230203217')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_cases")[0m
+
+Using ActiveSalesforce connection
+Establishing new connection for ['https://www.salesforce.com/services/Soap/u/11.0', 'afreeberg@ewebhealth.com, ''
+Created new connection for ['https://www.salesforce.com/services/Soap/u/11.0', 'afreeberg@ewebhealth.com', ''] in 0.98358416557312 seconds
+   Creating ActiveRecord stub for the referenced entity 'Contact'
+   Created one-to-one relationship 'contact' from Salesforce::Case to Salesforce::Contact using contact_id
+   Creating ActiveRecord stub for the referenced entity 'Account'
+   Created one-to-one relationship 'account' from Salesforce::Case to Salesforce::Account using account_id
+   Created one-to-one relationship 'parent' from Salesforce::Case to Salesforce::Case using parent_id
+   Creating ActiveRecord stub for the referenced entity 'RecordType'
+   Created one-to-one relationship 'record_type' from Salesforce::Case to Salesforce::RecordType using record_type_id
+   Skipping unsupported polymophic one-to-one relationship 'owner' from Salesforce::Case to [Group, User] using owner_id
+   Creating ActiveRecord stub for the referenced entity 'User'
+   Created one-to-one relationship 'created_by' from Salesforce::Case to Salesforce::User using created_by_id
+   Created one-to-one relationship 'last_modified_by' from Salesforce::Case to Salesforce::User using last_modified_by_id
+   Created one-to-one relationship 'case_advocate__c' from Salesforce::Case to Salesforce::User using case_advocate_id__c
+   Creating ActiveRecord stub for the referenced entity 'ActivityHistory'
+   Created one-to-many relationship 'activity_histories' from Salesforce::Case to Salesforce::ActivityHistory using what_id
+   Creating ActiveRecord stub for the referenced entity 'CaseComment'
+   Created one-to-many relationship 'case_comments' from Salesforce::Case to Salesforce::CaseComment using parent_id
+   Creating ActiveRecord stub for the referenced entity 'CaseContactRole'
+   Created one-to-many relationship 'case_contact_roles' from Salesforce::Case to Salesforce::CaseContactRole using cases_id
+   Creating ActiveRecord stub for the referenced entity 'CaseHistory'
+   Created one-to-many relationship 'histories' from Salesforce::Case to Salesforce::CaseHistory using case_id
+   Creating ActiveRecord stub for the referenced entity 'CaseShare'
+   Created one-to-many relationship 'shares' from Salesforce::Case to Salesforce::CaseShare using case_id
+   Creating ActiveRecord stub for the referenced entity 'CaseSolution'
+   Created one-to-many relationship 'case_solutions' from Salesforce::Case to Salesforce::CaseSolution using case_id
+   Creating ActiveRecord stub for the referenced entity 'Event'
+   Created one-to-many relationship 'events' from Salesforce::Case to Salesforce::Event using what_id
+   Creating ActiveRecord stub for the referenced entity 'OpenActivity'
+   Created one-to-many relationship 'open_activities' from Salesforce::Case to Salesforce::OpenActivity using what_id
+   Creating ActiveRecord stub for the referenced entity 'ProcessInstance'
+   Created one-to-many relationship 'process_instances' from Salesforce::Case to Salesforce::ProcessInstance using target_object_id
+   Creating ActiveRecord stub for the referenced entity 'Task'
+   Created one-to-many relationship 'tasks' from Salesforce::Case to Salesforce::Task using what_id
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSalesforceCases (20091230203217)
+Migrating to CreateSalesforceUsers (20091230203524)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "salesforce_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091230203524')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_cases")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_users")[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSalesforceCases (20091230203217)
+Migrating to CreateSalesforceUsers (20091230203524)
+Migrating to CreateSalesforceCaseComments (20091230203628)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "salesforce_case_comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091230203628')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_case_comments")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_cases")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_users")[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSalesforceCases (20091230203217)
+Migrating to CreateSalesforceUsers (20091230203524)
+Migrating to CreateSalesforceCaseComments (20091230203628)
+Migrating to CreateSalesforceCaseHistories (20091230203706)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TABLE "salesforce_case_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091230203706')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_case_comments")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_case_histories")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_cases")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_users")[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSalesforceCases (20091230203217)
+Migrating to CreateSalesforceUsers (20091230203524)
+Migrating to CreateSalesforceCaseComments (20091230203628)
+Migrating to CreateSalesforceCaseHistories (20091230203706)
+Migrating to CreateSalesforceCaseStatuses (20091230203825)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCREATE TABLE "salesforce_case_statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091230203825')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_case_comments")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_case_histories")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_case_statuses")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_cases")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_users")[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSalesforceCases (20091230203217)
+Migrating to CreateSalesforceUsers (20091230203524)
+Migrating to CreateSalesforceCaseComments (20091230203628)
+Migrating to CreateSalesforceCaseHistories (20091230203706)
+Migrating to CreateSalesforceCaseStatuses (20091230203825)
+Migrating to CreateSalesforceRecordTypes (20091230203907)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCREATE TABLE "salesforce_record_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091230203907')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_case_comments")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_case_histories")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_case_statuses")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_cases")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("salesforce_record_types")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("salesforce_users")[0m
