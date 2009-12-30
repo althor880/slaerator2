@@ -6,6 +6,7 @@
     <th>Startdate</th>
     <th>Enddate</th>
     <th>Closed</th>
+    <th>Case Owner(s)</th>
     <th>Lastrun</th>
   </tr>
   <% for query in @queries %>
@@ -14,6 +15,7 @@
       <td><%=h query.startdate %></td>
       <td><%=h query.enddate %></td>
       <td><%=h query.closed %></td>
+      <td><%=h query.owner_names %></td> 
       <td><%=h query.lastrun %></td>
       <td><%= link_to "Show", query %></td>
       <td><%= link_to "Edit", edit_query_path(query) %></td>

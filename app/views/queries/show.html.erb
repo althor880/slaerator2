@@ -18,9 +18,7 @@
 </p>
 <p>
   <strong>Case Owner(s):</strong>
-  <% @query.sf_users.each do |sfu| %>
-  <%=h sfu.name %>
-  <% end %>
+  <%=h @query.owner_names %>
 </p>
 <p>
   <strong>Lastrun:</strong>

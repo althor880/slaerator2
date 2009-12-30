@@ -13,7 +13,7 @@
     <%= f.check_box :closed %>
   </p>
   <p>
-    <%= f.label :sf_users %><br />
+    <%= f.label :sf_users, 'Case Owner(s)' %><br />
     <%= select_tag "sf_user_ids[]", options_for_select(SfUser.find(:all).collect { |u| [u.name, u.id] }, @query.sf_users.collect { |u| u.id }), {:multiple => true, :size => 6} %>
   </p>
   <p><%= f.submit "Submit" %></p>
