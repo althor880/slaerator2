@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091230203907) do
+ActiveRecord::Schema.define(:version => 20091230211537) do
+
+  create_table "queries", :force => true do |t|
+    t.integer  "query_id"
+    t.date     "startdate"
+    t.date     "enddate"
+    t.boolean  "closed"
+    t.datetime "lastrun"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "salesforce_case_comments", :force => true do |t|
     t.datetime "created_at"

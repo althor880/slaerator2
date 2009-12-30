@@ -1,0 +1,13 @@
+one:
+  query_id: 1
+  startdate: 2009-12-30
+  enddate: 2009-12-30
+  closed: false
+  lastrun: 2009-12-30 16:15:37
+
+two:
+  query_id: 1
+  startdate: 2009-12-30
+  enddate: 2009-12-30
+  closed: false
+  lastrun: 2009-12-30 16:15:37

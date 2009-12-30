@@ -1,0 +1,24 @@
+<% form_for @query do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :query_id %><br />
+    <%= f.text_field :query_id %>
+  </p>
+  <p>
+    <%= f.label :startdate %><br />
+    <%= f.date_select :startdate %>
+  </p>
+  <p>
+    <%= f.label :enddate %><br />
+    <%= f.date_select :enddate %>
+  </p>
+  <p>
+    <%= f.label :closed %><br />
+    <%= f.check_box :closed %>
+  </p>
+  <p>
+    <%= f.label :lastrun %><br />
+    <%= f.datetime_select :lastrun %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

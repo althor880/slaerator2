@@ -1,0 +1,28 @@
+<% title "Query" %>
+
+<p>
+  <strong>Query:</strong>
+  <%=h @query.query_id %>
+</p>
+<p>
+  <strong>Startdate:</strong>
+  <%=h @query.startdate %>
+</p>
+<p>
+  <strong>Enddate:</strong>
+  <%=h @query.enddate %>
+</p>
+<p>
+  <strong>Closed:</strong>
+  <%=h @query.closed %>
+</p>
+<p>
+  <strong>Lastrun:</strong>
+  <%=h @query.lastrun %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_query_path(@query) %> |
+  <%= link_to "Destroy", @query, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", queries_path %>
+</p>
