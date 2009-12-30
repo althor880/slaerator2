@@ -17,6 +17,12 @@
   <%=h @query.closed %>
 </p>
 <p>
+  <strong>Case Owner(s):</strong>
+  <% @query.sf_users.each do |sfu| %>
+  <%=h sfu.name %>
+  <% end %>
+</p>
+<p>
   <strong>Lastrun:</strong>
   <%=h @query.lastrun %>
 </p>

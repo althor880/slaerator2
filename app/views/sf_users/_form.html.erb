@@ -1,28 +1,12 @@
 <% form_for @sf_user do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :sf_user_id %><br />
-    <%= f.text_field :sf_user_id %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </p>
   <p>
-    <%= f.label :sfid %><br />
-    <%= f.text_field :sfid %>
-  </p>
-  <p>
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
   </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

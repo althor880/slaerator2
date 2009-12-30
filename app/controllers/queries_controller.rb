@@ -13,6 +13,7 @@ class QueriesController < ApplicationController
   
   def create
     @query = Query.new(params[:query])
+    @query.sf_users = SfUser.find(params[:sf_user_ids]) if params[:sf_user_ids]
     if @query.save
       flash[:notice] = "Successfully created query."
       redirect_to @query
@@ -27,6 +28,7 @@ class QueriesController < ApplicationController
   
   def update
     @query = Query.find(params[:id])
+    @query.sf_users = SfUser.find(params[:sf_user_ids]) if params[:sf_user_ids]
     if @query.update_attributes(params[:query])
       flash[:notice] = "Successfully updated query."
       redirect_to @query

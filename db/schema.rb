@@ -9,10 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091230211537) do
+ActiveRecord::Schema.define(:version => 20091230215918) do
 
-  create_table "queries", :force => true do |t|
-    t.integer  "query_id"
+  create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
     t.date     "enddate"
     t.boolean  "closed"
@@ -20,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20091230211537) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "queries_sf_users", :id => false, :force => true do |t|
+    t.integer "query_id"
+    t.integer "sf_user_id"
+  end
+
+  add_index "queries_sf_users", ["query_id"], :name => "index_queries_sf_users_on_query_id"
+  add_index "queries_sf_users", ["sf_user_id"], :name => "index_queries_sf_users_on_sf_user_id"
 
   create_table "salesforce_case_comments", :force => true do |t|
     t.datetime "created_at"
@@ -47,6 +54,16 @@ ActiveRecord::Schema.define(:version => 20091230211537) do
   end
 
   create_table "salesforce_users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sf_users", :primary_key => "sf_user_id", :force => true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "sfid",       :null => false
+    t.string   "last_name"
+    t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
