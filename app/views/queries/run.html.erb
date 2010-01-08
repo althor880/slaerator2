@@ -1,0 +1,27 @@
+<% title "Cases Found" %>
+
+<table>
+  <tr>
+    <th>Case Number</th>
+    <th>Owner</th>
+    <th>Status</th>
+    <th>Opened</th>
+    <th>Closed</th>
+    <th>Subject</th>
+    <th>Analyze</th>
+  </tr>
+  <% for mycase in @cases %>
+    <%="<div id='#{mycase.case_number}'>"%>
+      <tr>
+        <td><%=h mycase.case_number %></td>
+        <td><%=h mycase.owner_name %></td>
+        <td><%=h mycase.status %></td>
+        <td><%=h mycase.created_date.to_date %></td>
+        <td><%=h mycase.closed_date.to_date %></td>
+        <td><%=h mycase.subject %></td>
+        <td>
+        </td>
+      </tr>
+    </div>
+  <% end %>
+</table>

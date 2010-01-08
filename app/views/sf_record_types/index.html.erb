@@ -1,0 +1,27 @@
+<% title "Sf Record Types" %>
+
+<table>
+  <tr>
+    <th>Sf Record Type</th>
+    <th>Name</th>
+    <th>Sfid</th>
+    <th>Active</th>
+    <th>Sla</th>
+    <th>Description</th>
+  </tr>
+  <% for sf_record_type in @sf_record_types %>
+    <tr>
+      <td><%=h sf_record_type.sf_record_type_id %></td>
+      <td><%=h sf_record_type.name %></td>
+      <td><%=h sf_record_type.sfid %></td>
+      <td><%=h sf_record_type.active %></td>
+      <td><%=h sf_record_type.sla %></td>
+      <td><%=h sf_record_type.description %></td>
+      <td><%= link_to "Show", sf_record_type %></td>
+      <td><%= link_to "Edit", edit_sf_record_type_path(sf_record_type) %></td>
+      <td><%= link_to "Destroy", sf_record_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Sf Record Type", new_sf_record_type_path %></p>

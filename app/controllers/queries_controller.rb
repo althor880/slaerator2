@@ -6,7 +6,18 @@ class QueriesController < ApplicationController
   def show
     @query = Query.find(params[:id])
   end
-  
+
+  def run
+    @query = Query.find(params[:id])
+    @cases = Salesforce::Case.find(:all, :conditions => ["OwnerId in (:owners) AND status = 'Closed' AND ClosedDate > #{@query.startdate.to_datetime.to_s} AND ClosedDate < #{@query.enddate.to_datetime.to_s}", { :owners => @query.sf_users.collect{|sfu| sfu.sfid }}])
+  end
+
+  def analyze
+
+
+
+  end
+
   def new
     @query = Query.new
   end
@@ -14,6 +25,7 @@ class QueriesController < ApplicationController
   def create
     @query = Query.new(params[:query])
     @query.sf_users = SfUser.find(params[:sf_user_ids]) if params[:sf_user_ids]
+    @query.sf_record_types = SfRecordType.find(params[:sf_record_type_ids]) if params[:sf_record_type_ids]
     if @query.save
       flash[:notice] = "Successfully created query."
       redirect_to @query
@@ -29,6 +41,7 @@ class QueriesController < ApplicationController
   def update
     @query = Query.find(params[:id])
     @query.sf_users = SfUser.find(params[:sf_user_ids]) if params[:sf_user_ids]
+    @query.sf_record_types = SfRecordType.find(params[:sf_record_type_ids]) if params[:sf_record_type_ids]
     if @query.update_attributes(params[:query])
       flash[:notice] = "Successfully updated query."
       redirect_to @query

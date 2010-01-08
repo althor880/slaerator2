@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :sf_record_types
+
   map.resources :sf_users
 
-  map.resources :queries
+  map.resources :queries, :member => {:run => :get }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

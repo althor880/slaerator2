@@ -1,0 +1,15 @@
+one:
+  sf_record_type_id: 1
+  name: MyString
+  sfid: MyString
+  active: false
+  sla: false
+  description: MyString
+
+two:
+  sf_record_type_id: 1
+  name: MyString
+  sfid: MyString
+  active: false
+  sla: false
+  description: MyString

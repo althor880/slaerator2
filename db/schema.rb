@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091230215918) do
+ActiveRecord::Schema.define(:version => 20091230231209) do
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20091230215918) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "queries_sf_record_types", :id => false, :force => true do |t|
+    t.integer "query_id"
+    t.integer "sf_record_type_id"
+  end
+
+  add_index "queries_sf_record_types", ["query_id"], :name => "index_queries_sf_record_types_on_query_id"
+  add_index "queries_sf_record_types", ["sf_record_type_id"], :name => "index_queries_sf_record_types_on_sf_record_type_id"
 
   create_table "queries_sf_users", :id => false, :force => true do |t|
     t.integer "query_id"
@@ -54,6 +62,16 @@ ActiveRecord::Schema.define(:version => 20091230215918) do
   end
 
   create_table "salesforce_users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sf_record_types", :primary_key => "sf_record_type_id", :force => true do |t|
+    t.string   "name",                           :null => false
+    t.string   "sfid",                           :null => false
+    t.boolean  "active",      :default => true,  :null => false
+    t.boolean  "sla",         :default => false, :null => false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
