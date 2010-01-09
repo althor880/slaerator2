@@ -23,7 +23,11 @@
           <% if mycase.analyzed? %>
             <%= h mycase.metsla %>
           <% else %>
-            <%= "button goes here" %>
+            <div id="analyze_form">
+              <% form_remote_tag :url => analyze_sf_case_path(mycase) do %>
+                <%= submit_tag 'Analyze Case' %>
+              <% end %>
+            </div>
           <% end %>
         </td>
       </tr>

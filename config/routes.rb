@@ -1,7 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :sf_record_types
 
-  map.resources :sf_users
+ 
+  map.resources :sf_cases
 
   map.resources :queries, :member => {:run => :get }
 
