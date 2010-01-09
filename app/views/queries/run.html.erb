@@ -20,6 +20,11 @@
         <td><%=h mycase.closed_date.to_date %></td>
         <td><%=h mycase.subject %></td>
         <td>
+          <% if mycase.analyzed? %>
+            <%= h mycase.metsla %>
+          <% else %>
+            <%= "button goes here" %>
+          <% end %>
         </td>
       </tr>
     </div>

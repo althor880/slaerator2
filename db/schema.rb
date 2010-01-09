@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091230231209) do
+ActiveRecord::Schema.define(:version => 20100108223723) do
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(:version => 20091230231209) do
   end
 
   create_table "salesforce_users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sf_cases", :force => true do |t|
+    t.string   "sfid",                          :null => false
+    t.boolean  "analyzed",   :default => false, :null => false
+    t.boolean  "metsla"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

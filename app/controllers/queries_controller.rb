@@ -10,6 +10,15 @@ class QueriesController < ApplicationController
   def run
     @query = Query.find(params[:id])
     @cases = Salesforce::Case.find(:all, :conditions => ["OwnerId in (:owners) AND status = 'Closed' AND ClosedDate > #{@query.startdate.to_datetime.to_s} AND ClosedDate < #{@query.enddate.to_datetime.to_s}", { :owners => @query.sf_users.collect{|sfu| sfu.sfid }}])
+    @cases.each do |thiscase|
+    
+      unless SfCase.find_by_sfid(thiscase.id)
+        newsfcase = SfCase.new(:sfid => thiscase.id)
+        newsfcase.save
+      end
+    
+    end
+    
   end
 
   def analyze
