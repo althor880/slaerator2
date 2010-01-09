@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sfid: MyString
+  analyzed: false
+  metsla: false
+
+two:
+  sfid: MyString
+  analyzed: false
+  metsla: false
