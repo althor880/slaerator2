@@ -11,7 +11,6 @@
     <th>Analyze</th>
   </tr>
   <% for mycase in @cases %>
-    <%="<div id='#{mycase.case_number}'>"%>
       <tr>
         <td><%=h mycase.case_number %></td>
         <td><%=h mycase.owner_name %></td>
@@ -23,14 +22,13 @@
           <% if mycase.analyzed? %>
             <%= h mycase.metsla %>
           <% else %>
-            <div id="analyze_form">
-              <% form_remote_tag :url => analyze_sf_case_path(mycase) do %>
+            <%="<div id='#{mycase.id}'>"%>
+              <% form_remote_tag :url => analyze_path(mycase.id) do %>
                 <%= submit_tag 'Analyze Case' %>
               <% end %>
             </div>
           <% end %>
         </td>
       </tr>
-    </div>
   <% end %>
 </table>

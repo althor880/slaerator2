@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  RecordTypeId: MyString
+  CaseStatusId: MyString
+  TimeInterval: 1
+
+two:
+  RecordTypeId: MyString
+  CaseStatusId: MyString
+  TimeInterval: 1

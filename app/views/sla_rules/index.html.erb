@@ -1,0 +1,23 @@
+<% title "SLA Rules" %>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Time Limit</th>
+  </tr>
+  <% for sla_rule in @sla_rules %>
+    <tr>
+      <td><%=h sla_rule.RecordTypeId %></td>
+      <td><%=h sla_rule.CaseStatusId %></td>
+      <td><%=h sla_rule.CasePriority %></td>
+      <td><%=h sla_rule.TimeInterval %></td>
+      <td><%= link_to "Show", sla_rule %></td>
+      <td><%= link_to "Edit", edit_sla_rule_path(sla_rule) %></td>
+      <td><%= link_to "Destroy", sla_rule, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Sla Rule", new_sla_rule_path %></p>

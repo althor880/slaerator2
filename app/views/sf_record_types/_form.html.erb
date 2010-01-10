@@ -4,5 +4,9 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+  <p>
+    <%= f.label :sf_statuses, 'Status(es)' %><br />
+    <%= select_tag "sf_status_ids[]", options_for_select(SfStatus.find(:all).collect { |s| [s.MasterLabel, s.id] }, @sf_record_type.sf_statuses.collect { |s| s.id }), {:multiple => true, :size => 6} %>
+  </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>
