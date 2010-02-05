@@ -9,7 +9,7 @@ class QueriesController < ApplicationController
 
   def run
     @query = Query.find(params[:id])
-    @cases = Salesforce::Case.find(:all, :conditions => ["OwnerId in (:owners) AND status = 'Closed' AND ClosedDate > #{@query.startdate.to_datetime.to_s} AND ClosedDate < #{@query.enddate.to_datetime.to_s}", { :owners => @query.sf_users.collect{|sfu| sfu.sfid }}])
+    @cases = Salesforce::Case.find(:all, :conditions => ["OwnerId in (:owners) AND status = 'Closed' AND ClosedDate > #{@query.startdate.to_datetime.to_s} AND ClosedDate < #{@query.enddate.to_datetime.to_s} AND RecordTypeId in (:recordtypes)", { :owners => @query.sf_users.collect{|sfu| sfu.sfid }, :recordtypes => @query.sf_record_types.collect{|sfrt| sfrt.sfid }}])
     @cases.each do |thiscase|
     
       unless SfCase.find_by_sfid(thiscase.id)
@@ -23,7 +23,13 @@ class QueriesController < ApplicationController
 
   def analyze
 
+    logger.info 'analyze button pressed' 
 
+  end
+
+  def analyzeall
+
+    logger.info 'analyze ALL button pressed'
 
   end
 
@@ -58,6 +64,7 @@ class QueriesController < ApplicationController
       render :action => 'edit'
     end
   end
+
   
   def destroy
     @query = Query.find(params[:id])

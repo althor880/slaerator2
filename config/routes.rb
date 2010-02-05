@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :sf_statuses
+
 
   map.update_case_statuses "sla_rule/:id/update_case_statuses", :controller => 'sla_rules', :action => 'update_case_statuses'
 
@@ -8,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :sf_record_types
 
-  map.analyze "sf_cases/:sfid/analyze", :controller => 'sf_cases', :action => 'analyze'
+  map.connect "sf_cases/:action", :controller => 'sf_cases', :action => /[a-z]+/i
 
   map.connect "sf_cases/:sfid/:action", :controller => 'sf_cases', :action => /[a-z]+/i
 

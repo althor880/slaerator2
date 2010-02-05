@@ -7,10 +7,9 @@
   <div id="case_statuses">
     <p>
       <%= f.label :CaseStatusId, "Case Status" %><br />
-      <%= f.text_field :CaseStatusId %>
+      <%= collection_select(:sla_rule, :CaseStatusId, SfStatus.find(:all), :id, :MasterLabel, {:prompt => true}) %>
     </p>
   </div>
-  <% observe_field("case_statuses", :url => :update_case_statuses, :with => :id) %>
   <p>
     <%= f.label :CasePriority, "Case Priority" %><br />
     <%= f.text_field :CasePriority %>

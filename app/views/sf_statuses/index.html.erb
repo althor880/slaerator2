@@ -1,0 +1,19 @@
+<% title "Sf Statuses" %>
+
+<table>
+  <tr>
+    <th>Masterlabel</th>
+    <th>Sfid</th>
+  </tr>
+  <% for sf_status in @sf_statuses %>
+    <tr>
+      <td><%=h sf_status.MasterLabel %></td>
+      <td><%=h sf_status.sfid %></td>
+      <td><%= link_to "Show", sf_status %></td>
+      <td><%= link_to "Edit", edit_sf_status_path(sf_status) %></td>
+      <td><%= link_to "Destroy", sf_status, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Sf Status", new_sf_status_path %></p>

@@ -1,0 +1,12 @@
+<% form_for @sf_status do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :MasterLabel %><br />
+    <%= f.text_field :MasterLabel %>
+  </p>
+  <p>
+    <%= f.label :sfid %><br />
+    <%= f.text_field :sfid %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
