@@ -30,16 +30,23 @@ class SfCase < ActiveRecord::Base
                 @thiscase.status
               end
 
-    
+    @sladeadline = getsladeadline(@status, @priority, @slastart)
 
 
     logger.info "Case slastart: #{@slastart}"
+    logger.info "Case sladeadline: #{@sladeadline}"
     logger.info "Case statusstart: #{@status}"
     logger.info "Case Starting Priority (@priority): #{@priority}"
     logger.info "Case Ending Priority: #{@thiscase.priority}"
 
     true
 
+
+  end
+
+  def getsladeadline(status, priority, slastart)
+
+    slastart + 15.minutes
 
   end
 

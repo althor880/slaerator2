@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100110015136) do
+ActiveRecord::Schema.define(:version => 20100205160316) do
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20100110015136) do
     t.integer  "TimeInterval"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "FirstContact"
   end
 
 end
