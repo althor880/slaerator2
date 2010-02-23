@@ -5,12 +5,12 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :active %><br />
-    <%= f.check_box :active %> 
+    <%= f.label :sla, "These record types should be analyzed for SLA (rules must be defined):" %><br />
+    <%= f.check_box :sla %>
   </p>
   <p>
-    <%= f.label :sf_statuses, 'Status(es)' %><br />
-    <%= select_tag "sf_status_ids[]", options_for_select(SfStatus.find(:all).collect { |s| [s.MasterLabel, s.id] }, @sf_record_type.sf_statuses.collect { |s| s.id }), {:multiple => true, :size => 6} %>
+    <%= f.label :active, "Activate this record type:" %><br />
+    <%= f.check_box :active %> 
   </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

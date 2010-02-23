@@ -17,8 +17,6 @@ class SfRecordTypesController < ApplicationController
     if @sfrt_found
       @sf_record_type.name = @sfrt_found.name
       @sf_record_type.sfid = @sfrt_found.id
-      @sf_record_type.active = false
-      @sf_record_type.sla = false
       @sf_record_type.description = @sfrt_found.description
       if @sf_record_type.save
         flash[:notice] = "Successfully created sf record type."

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100205160316) do
+ActiveRecord::Schema.define(:version => 20100108223723) do
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
@@ -84,21 +84,6 @@ ActiveRecord::Schema.define(:version => 20100205160316) do
     t.datetime "updated_at"
   end
 
-  create_table "sf_record_types_sf_statuses", :id => false, :force => true do |t|
-    t.integer "sf_record_type_id"
-    t.integer "sf_status_id"
-  end
-
-  add_index "sf_record_types_sf_statuses", ["sf_record_type_id"], :name => "index_sf_record_types_sf_statuses_on_sf_record_type_id"
-  add_index "sf_record_types_sf_statuses", ["sf_status_id"], :name => "index_sf_record_types_sf_statuses_on_sf_status_id"
-
-  create_table "sf_statuses", :force => true do |t|
-    t.string   "MasterLabel"
-    t.string   "sfid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sf_users", :primary_key => "sf_user_id", :force => true do |t|
     t.string   "email"
     t.string   "first_name"
@@ -107,16 +92,6 @@ ActiveRecord::Schema.define(:version => 20100205160316) do
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "sla_rules", :force => true do |t|
-    t.string   "RecordTypeId"
-    t.string   "CaseStatusId"
-    t.string   "CasePriority"
-    t.integer  "TimeInterval"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "FirstContact"
   end
 
 end

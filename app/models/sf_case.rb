@@ -16,20 +16,26 @@ class SfCase < ActiveRecord::Base
     @casehistory = @thiscase.case_histories.find(:all, :conditions => { :field => ["priority", "status", "recordtype", "closed", "created"]})
     @casetimeline = @casecomments.to_a + @casehistory.to_a
     @casetimeline = @casetimeline.sort { |a,b| a.created_date <=> b.created_date }
-    
-    @priority = if this = @casehistory.find { |hist| hist.field == "Priority" }.old_value
-                  this
+
+    @casehistory = @casehistory.sort { |a,b| a.created_date <=> b.created_date }
+  
+    @priority = if @casehistory.find { |hist| hist.field == "Priority" }
+                  @casehistory.find { |hist| hist.field == "Priority" }.old_value
                 else
                   @thiscase.priority
                 end
 
+    logger.info "Case Starting Priority (@priority): #{@priority}"
+
     @slastart = @thiscase.created_date
 
-    @status = if this = @casehistory.find { |hist| hist.field == "Status" }.old_value
-                this
+    @status = if @casehistory.find { |hist| hist.field == "Status" }
+                @casehistory.find {|hist| hist.field == "Status"}.old_value
               else
                 @thiscase.status
               end
+
+    logger.info "Case starting status (@status): #{@status}"
 
     @firstcontact = false
 
@@ -57,7 +63,7 @@ class SfCase < ActiveRecord::Base
 
         elsif thisevent.field.downcase == "closed"
 
-          @slacheck << {:event => "Closed", :slacheck => slavalue(@slastart, @sladeadline)}
+          @slacheck << {:event => "Closed", :slacheck => slavalue(thisevent.created_date, @sladeadline)}
 
         elsif thisevent.field.downcase == "created"
 
@@ -73,7 +79,7 @@ class SfCase < ActiveRecord::Base
 
       elsif thisevent.class.to_s == "Salesforce::CaseComment"
 
-        @slacheck << {:event => "Contact", :slacheck => slavalue}
+        @slacheck << {:event => "Contact", :slacheck => slavalue(thisevent.created_date, @sladeadline)}
         @slastart = thisevent.created_date
         if @firstcontact == false
 
@@ -93,8 +99,8 @@ class SfCase < ActiveRecord::Base
     logger.info "First contact made?: #{@firstcontact}"
     logger.info "Case slastart: #{@slastart}"
     logger.info "Case sladeadline: #{@sladeadline}"
-    logger.info "Case statusstart: #{@status}"
-    logger.info "Case Starting Priority (@priority): #{@priority}"
+    logger.info "Case end status: #{@status}"
+
     logger.info "Case Ending Priority: #{@thiscase.priority}"
 
     true
@@ -102,13 +108,23 @@ class SfCase < ActiveRecord::Base
 
   end
 
-  def slavalue
+  def slavalue(slastart, sladeadline)
 
-    true
+    difference = sladeadline - slastart
+    if (difference >= 0)
+      logger.info "slastart = #{slastart} sladeadline = #{sladeadline} TRUE"
+      return true
+    elsif (difference < 0)
+      logger.info "slastart = #{slastart} sladeadline = #{sladeadline} FALSE"
+      return false
+    else
+      logger.info "slastart = #{slastart} sladeadline = #{sladeadline} ERROR!@!! - Invalid slavalue"
+      return nil
+    end
 
   end
 
-  def getsladeadline(status, priority, slastart)
+  def getsladeadline(status, priority, slastart, firstcontact)
 
     slastart + 15.minutes
 
