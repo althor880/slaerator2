@@ -139,11 +139,19 @@ class SfCase < ActiveRecord::Base
     @increment_by = SlaRule.find(:first, :conditions => { :sf_record_types => { :name => record_type_name }, :sf_case_priorities => { :name => priority }, :sf_case_statuses => { :name => status }, :first_contact => firstcontact}, :joins => [:sf_record_type, :sf_case_priority, :sf_case_status]).increment_by
 
     if @increment_by != 0
-      slastart + @increment_by.minutes
+      if firstcontact
+        to_business_hours(slastart + @increment_by.minutes)
+      else
+        slastart + @increment_by.minutes
+      end
     else
       slastart + 10.years
     end
 
+  end
+
+  def to_business_hours(deadline)
+    deadline
   end
 
   def get_record_type_name(thiscase)
