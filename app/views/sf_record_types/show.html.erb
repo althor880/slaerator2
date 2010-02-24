@@ -24,7 +24,10 @@
   <strong>Description:</strong>
   <%=h @sf_record_type.description %>
 </p>
-
+<p>
+  <strong>Statuses:</strong>
+  <%=h @sf_record_type.case_statuses_list %>
+</p>
 <p>
   <%= link_to "Edit", edit_sf_record_type_path(@sf_record_type) %> |
   <%= link_to "Destroy", @sf_record_type, :confirm => 'Are you sure?', :method => :delete %> |

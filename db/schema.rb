@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100223235838) do
+ActiveRecord::Schema.define(:version => 20100224000941) do
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(:version => 20100223235838) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sf_case_statuses_sf_record_types", :id => false, :force => true do |t|
+    t.integer "sf_case_status_id"
+    t.integer "sf_record_type_id"
+  end
+
+  add_index "sf_case_statuses_sf_record_types", ["sf_case_status_id"], :name => "index_sf_case_statuses_sf_record_types_on_sf_case_status_id"
+  add_index "sf_case_statuses_sf_record_types", ["sf_record_type_id"], :name => "index_sf_case_statuses_sf_record_types_on_sf_record_type_id"
 
   create_table "sf_cases", :force => true do |t|
     t.string   "sfid",                          :null => false

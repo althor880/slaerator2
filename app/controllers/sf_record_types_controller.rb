@@ -18,6 +18,7 @@ class SfRecordTypesController < ApplicationController
       @sf_record_type.name = @sfrt_found.name
       @sf_record_type.sfid = @sfrt_found.id
       @sf_record_type.description = @sfrt_found.description
+      @sf_record_type.sf_case_statuses = SfCaseStatus.find(params[:sf_case_status_ids]) if params[:sf_case_status_ids]
       if @sf_record_type.save
         flash[:notice] = "Successfully created sf record type."
         redirect_to @sf_record_type
@@ -29,7 +30,6 @@ class SfRecordTypesController < ApplicationController
       flash[:notice] = "No record type found with that name, must include the exact name as displayed in SalesForce."
       render :action => 'new'
     end
-    @sf_record_type.sf_statuses = SfStatus.find(params[:sf_status_ids]) if params[:sf_status_ids]
   end
   
   def edit
@@ -38,7 +38,7 @@ class SfRecordTypesController < ApplicationController
   
   def update
     @sf_record_type = SfRecordType.find(params[:id])
-    @sf_record_type.sf_statuses = SfStatus.find(params[:sf_status_ids]) if params[:sf_status_ids]
+    @sf_record_type.sf_case_statuses = SfCaseStatus.find(params[:sf_case_status_ids]) if params[:sf_case_status_ids]
     if @sf_record_type.update_attributes(params[:sf_record_type])
       flash[:notice] = "Successfully updated sf record type."
       redirect_to @sf_record_type
