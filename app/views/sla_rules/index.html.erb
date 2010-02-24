@@ -2,11 +2,17 @@
 
 <table>
   <tr>
+    <th>Sf Record Type</th>
+    <th>Sf Case Priority</th>
+    <th>Sf Case Status</th>
     <th>First Contact</th>
     <th>Increment By</th>
   </tr>
   <% for sla_rule in @sla_rules %>
     <tr>
+      <td><%=h sla_rule.sf_record_type_id %></td>
+      <td><%=h sla_rule.sf_case_priority_id %></td>
+      <td><%=h sla_rule.sf_case_status_id %></td>
       <td><%=h sla_rule.first_contact %></td>
       <td><%=h sla_rule.increment_by %></td>
       <td><%= link_to "Show", sla_rule %></td>

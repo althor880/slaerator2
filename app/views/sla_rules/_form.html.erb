@@ -1,6 +1,18 @@
 <% form_for @sla_rule do |f| %>
   <%= f.error_messages %>
   <p>
+    <%= f.label :sf_record_type_id %><br />
+    <%= f.text_field :sf_record_type_id %>
+  </p>
+  <p>
+    <%= f.label :sf_case_priority_id %><br />
+    <%= f.text_field :sf_case_priority_id %>
+  </p>
+  <p>
+    <%= f.label :sf_case_status_id %><br />
+    <%= f.text_field :sf_case_status_id %>
+  </p>
+  <p>
     <%= f.label :first_contact %><br />
     <%= f.check_box :first_contact %>
   </p>
