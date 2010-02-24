@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100224011756) do
+ActiveRecord::Schema.define(:version => 20100224013527) do
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
@@ -118,6 +118,13 @@ ActiveRecord::Schema.define(:version => 20100224011756) do
     t.string   "sfid",       :null => false
     t.string   "last_name"
     t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sla_rules", :force => true do |t|
+    t.boolean  "first_contact"
+    t.integer  "increment_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

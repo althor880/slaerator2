@@ -1,0 +1,16 @@
+<% title "Sla Rule" %>
+
+<p>
+  <strong>First Contact:</strong>
+  <%=h @sla_rule.first_contact %>
+</p>
+<p>
+  <strong>Increment By:</strong>
+  <%=h @sla_rule.increment_by %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_sla_rule_path(@sla_rule) %> |
+  <%= link_to "Destroy", @sla_rule, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", sla_rules_path %>
+</p>

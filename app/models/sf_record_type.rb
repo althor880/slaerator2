@@ -4,6 +4,7 @@ class SfRecordType < ActiveRecord::Base
   has_and_belongs_to_many :queries
   has_and_belongs_to_many :sf_case_statuses
   has_and_belongs_to_many :sf_case_priorities
+  has_many :sla_rules
 
   def record_name
 

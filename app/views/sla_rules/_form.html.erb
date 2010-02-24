@@ -1,0 +1,12 @@
+<% form_for @sla_rule do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :first_contact %><br />
+    <%= f.check_box :first_contact %>
+  </p>
+  <p>
+    <%= f.label :increment_by %><br />
+    <%= f.text_field :increment_by %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
