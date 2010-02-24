@@ -2,15 +2,15 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :sf_record_type_id %><br />
-    <%= f.text_field :sf_record_type_id %>
+    <%= collection_select(:sla_rule, :sf_record_type_id, SfRecordType.all, :id, :name) %>
   </p>
   <p>
     <%= f.label :sf_case_priority_id %><br />
-    <%= f.text_field :sf_case_priority_id %>
+    <%= collection_select(:sla_rule, :sf_case_priority_id, SfCasePriority.all, :id, :name) %>
   </p>
   <p>
     <%= f.label :sf_case_status_id %><br />
-    <%= f.text_field :sf_case_status_id %>
+    <%= collection_select(:sla_rule, :sf_case_status_id, SfCaseStatus.all, :id, :name) %>
   </p>
   <p>
     <%= f.label :first_contact %><br />

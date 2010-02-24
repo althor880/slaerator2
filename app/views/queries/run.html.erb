@@ -23,7 +23,7 @@
             <%= h mycase.metsla %>
           <% else %>
             <%="<div id='#{mycase.id}'>"%>
-              <% form_remote_tag :url => {:controller => '/sf_cases', :action => 'analyze', :id => mycase.id}, :html => {:action => {:controller => '/posts', :action => 'analyze', :sfid => mycase.id}} do %>
+              <% form_remote_tag :url => {:controller => '/sf_cases', :action => 'analyze', :id => mycase.id}, :html => {:action => {:controller => '/sf_cases', :action => 'analyze'}} do %>
                 <%= submit_tag 'Analyze' %>
               <% end %>
             </div>

@@ -1,10 +1,5 @@
 class SfCasesController < ApplicationController
-
-def analyze
-
-
-    @case = Salesforce::Case.find_by_id(params[:id])
+  def analyze
     @sf_case = SfCase.find_by_sfid(params[:id])
-    
   end
 end

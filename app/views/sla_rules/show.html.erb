@@ -2,15 +2,15 @@
 
 <p>
   <strong>Sf Record Type:</strong>
-  <%=h @sla_rule.sf_record_type_id %>
+  <%=h @sla_rule.sf_record_type_name %>
 </p>
 <p>
   <strong>Sf Case Priority:</strong>
-  <%=h @sla_rule.sf_case_priority_id %>
+  <%=h @sla_rule.sf_case_priority_name %>
 </p>
 <p>
   <strong>Sf Case Status:</strong>
-  <%=h @sla_rule.sf_case_status_id %>
+  <%=h @sla_rule.sf_case_status_name %>
 </p>
 <p>
   <strong>First Contact:</strong>
@@ -18,7 +18,7 @@
 </p>
 <p>
   <strong>Increment By:</strong>
-  <%=h @sla_rule.increment_by %>
+  <%=h @sla_rule.increment_by.minutes.to_utc_offset_s %>
 </p>
 
 <p>

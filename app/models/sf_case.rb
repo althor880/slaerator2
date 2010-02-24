@@ -18,6 +18,8 @@ class SfCase < ActiveRecord::Base
     @casetimeline = @casetimeline.sort { |a,b| a.created_date <=> b.created_date }
 
     @casehistory = @casehistory.sort { |a,b| a.created_date <=> b.created_date }
+
+    @record_type_name = get_record_type_name(@thiscase)
   
     @priority = if @casehistory.find { |hist| hist.field == "Priority" }
                   @casehistory.find { |hist| hist.field == "Priority" }.old_value
@@ -39,7 +41,7 @@ class SfCase < ActiveRecord::Base
 
     @firstcontact = false
 
-    @sladeadline = getsladeadline(@status, @priority, @slastart, @firstcontact)
+    @sladeadline = getsladeadline(@record_type_name, @status, @priority, @slastart, @firstcontact)
 
     @casetimeline.each do |thisevent|
 
@@ -49,13 +51,13 @@ class SfCase < ActiveRecord::Base
 
           @slacheck << {:event => "Priority", :slacheck => nil}
           @priority = thisevent.new_value
-          @sladeadline = getsladeadline(@status, @priority, @slastart, @firstcontact)
+          @sladeadline = getsladeadline(@record_type_name, @status, @priority, @slastart, @firstcontact)
 
         elsif thisevent.field.downcase == "status"
 
           @slacheck << {:event => "Status", :slacheck => nil}
           @status = thisevent.new_value
-          @sladeadline = getsladeadline(@status, @priority, @slastart, @firstcontact)
+          @sladeadline = getsladeadline(@record_type_name, @status, @priority, @slastart, @firstcontact)
 
         elsif thisevent.field.downcase == "recordtype"
 
@@ -69,7 +71,7 @@ class SfCase < ActiveRecord::Base
 
           @slacheck << {:event => "Created", :slacheck => nil}
           @slastart = thisevent.created_date
-          @sladeadline = getsladeadline(@status, @priority, @slastart, @firstcontact)
+          @sladeadline = getsladeadline(@record_type_name, @status, @priority, @slastart, @firstcontact)
 
         else
 
@@ -86,7 +88,7 @@ class SfCase < ActiveRecord::Base
           @firstcontact = true
 
         end
-        @sladeadline = getsladeadline(@status, @priority, @slastart, @firstcontact)
+        @sladeadline = getsladeadline(@record_type_name, @status, @priority, @slastart, @firstcontact)
 
       else
 
@@ -103,7 +105,15 @@ class SfCase < ActiveRecord::Base
 
     logger.info "Case Ending Priority: #{@thiscase.priority}"
 
-    true
+    @slacheck.each do |slac|
+      logger.info "SLA Entry: Event - #{slac[:event]}, Value - #{slac[:slacheck]}"
+    end
+
+    if @slacheck.find {|slaentry| slaentry[:slacheck] == false}
+      return false
+    else
+      return true
+    end
 
 
   end
@@ -124,10 +134,20 @@ class SfCase < ActiveRecord::Base
 
   end
 
-  def getsladeadline(status, priority, slastart, firstcontact)
+  def getsladeadline(record_type_name, status, priority, slastart, firstcontact)
 
-    slastart + 15.minutes
+    @increment_by = SlaRule.find(:first, :conditions => { :sf_record_types => { :name => record_type_name }, :sf_case_priorities => { :name => priority }, :sf_case_statuses => { :name => status }, :first_contact => firstcontact}, :joins => [:sf_record_type, :sf_case_priority, :sf_case_status]).increment_by
 
+    if @increment_by != 0
+      slastart + @increment_by.minutes
+    else
+      slastart + 10.years
+    end
+
+  end
+
+  def get_record_type_name(thiscase)
+    thiscase.record_type.name
   end
 
 end
