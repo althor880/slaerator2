@@ -16,5 +16,9 @@
     <%= f.label :sf_case_statuses, 'Case Status(es):' %><br />
     <%= select_tag "sf_case_status_ids[]", options_for_select(SfCaseStatus.find(:all).collect { |u| [u.name, u.id] }, @sf_record_type.sf_case_statuses.collect { |u| u.id }), {:multiple => true, :size => 12} %>
   </p>
+  <p>
+    <%= f.label :sf_case_priorities, 'Case Priorities:' %><br />
+    <%= select_tag "sf_case_priority_ids[]", options_for_select(SfCasePriority.find(:all).collect { |u| [u.name, u.id] }, @sf_record_type.sf_case_priorities.collect { |u| u.id }), {:multiple => true, :size => 3} %>
+  </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

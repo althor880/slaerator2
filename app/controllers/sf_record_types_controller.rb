@@ -19,6 +19,7 @@ class SfRecordTypesController < ApplicationController
       @sf_record_type.sfid = @sfrt_found.id
       @sf_record_type.description = @sfrt_found.description
       @sf_record_type.sf_case_statuses = SfCaseStatus.find(params[:sf_case_status_ids]) if params[:sf_case_status_ids]
+      @sf_record_type.sf_case_priorities = SfCasePriority.find(params[:sf_case_priority_ids]) if params[:sf_case_priority_ids]
       if @sf_record_type.save
         flash[:notice] = "Successfully created sf record type."
         redirect_to @sf_record_type
@@ -39,6 +40,7 @@ class SfRecordTypesController < ApplicationController
   def update
     @sf_record_type = SfRecordType.find(params[:id])
     @sf_record_type.sf_case_statuses = SfCaseStatus.find(params[:sf_case_status_ids]) if params[:sf_case_status_ids]
+    @sf_record_type.sf_case_priorities = SfCasePriority.find(params[:sf_case_priority_ids]) if params[:sf_case_priority_ids]
     if @sf_record_type.update_attributes(params[:sf_record_type])
       flash[:notice] = "Successfully updated sf record type."
       redirect_to @sf_record_type
