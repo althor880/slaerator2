@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100224044655) do
+ActiveRecord::Schema.define(:version => 20100224222349) do
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20100224044655) do
     t.integer  "increment_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "ignore_business_hours", :default => false
   end
 
 end

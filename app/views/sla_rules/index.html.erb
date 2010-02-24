@@ -6,6 +6,7 @@
     <th>Sf Case Priority</th>
     <th>Sf Case Status</th>
     <th>First Contact</th>
+    <th>Ignore Business Hours</th>
     <th>Increment By</th>
   </tr>
   <% for sla_rule in @sla_rules %>
@@ -14,6 +15,7 @@
       <td><%=h sla_rule.sf_case_priority_name %></td>
       <td><%=h sla_rule.sf_case_status_name %></td>
       <td><%=h sla_rule.first_contact %></td>
+      <td><%=h sla_rule.ignore_business_hours %></td>
       <td><%=h sla_rule.increment_by.minutes.to_utc_offset_s %></td>
       <td><%= link_to "Show", sla_rule %></td>
       <td><%= link_to "Edit", edit_sla_rule_path(sla_rule) %></td>

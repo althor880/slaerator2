@@ -17,6 +17,10 @@
   <%=h @sla_rule.first_contact %>
 </p>
 <p>
+  <strong>Ignore Business Hours:</strong>
+  <%=h @sla_rule.ignore_business_hours %>
+</p>
+<p>
   <strong>Increment By:</strong>
   <%=h @sla_rule.increment_by.minutes.to_utc_offset_s %>
 </p>
