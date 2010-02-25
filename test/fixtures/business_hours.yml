@@ -1,0 +1,15 @@
+one:
+  weekday: 1
+  workday: false
+  start_day_hour: 1
+  start_day_minute: 1
+  end_day_hour: 1
+  end_day_minute: 1
+
+two:
+  weekday: 1
+  workday: false
+  start_day_hour: 1
+  start_day_minute: 1
+  end_day_hour: 1
+  end_day_minute: 1

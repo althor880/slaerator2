@@ -1,0 +1,27 @@
+<% title "Business Hours" %>
+
+<table>
+  <tr>
+    <th>Weekday</th>
+    <th>Workday</th>
+    <th>Start Day Hour</th>
+    <th>Start Day Minute</th>
+    <th>End Day Hour</th>
+    <th>End Day Minute</th>
+  </tr>
+  <% for business_hour in @business_hours %>
+    <tr>
+      <td><%=h business_hour.weekday %></td>
+      <td><%=h business_hour.workday %></td>
+      <td><%=h business_hour.start_day_hour %></td>
+      <td><%=h business_hour.start_day_minute %></td>
+      <td><%=h business_hour.end_day_hour %></td>
+      <td><%=h business_hour.end_day_minute %></td>
+      <td><%= link_to "Show", business_hour %></td>
+      <td><%= link_to "Edit", edit_business_hour_path(business_hour) %></td>
+      <td><%= link_to "Destroy", business_hour, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Business Hour", new_business_hour_path %></p>

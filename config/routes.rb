@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :business_hours
+
   map.resources :sla_rules
 
   map.resources :sf_statuses

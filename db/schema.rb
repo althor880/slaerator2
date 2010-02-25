@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100224222349) do
+ActiveRecord::Schema.define(:version => 20100225002744) do
+
+  create_table "business_hours", :force => true do |t|
+    t.integer  "weekday"
+    t.boolean  "workday"
+    t.integer  "start_day_hour"
+    t.integer  "start_day_minute"
+    t.integer  "end_day_hour"
+    t.integer  "end_day_minute"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "queries", :primary_key => "query_id", :force => true do |t|
     t.date     "startdate"
