@@ -1,3 +1,3 @@
 class Salesforce::CaseStatus < ActiveRecord::Base
-  establish_connection "sf_development"
+  establish_connection "sf_production"
 end
