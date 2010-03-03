@@ -1,0 +1,32 @@
+<% title "Business Hour" %>
+
+<p>
+  <strong>Weekday:</strong>
+  <%=h @business_hour.weekday %>
+</p>
+<p>
+  <strong>Workday:</strong>
+  <%=h @business_hour.workday %>
+</p>
+<p>
+  <strong>Start Day Hour:</strong>
+  <%=h @business_hour.start_day_hour %>
+</p>
+<p>
+  <strong>Start Day Minute:</strong>
+  <%=h @business_hour.start_day_minute %>
+</p>
+<p>
+  <strong>End Day Hour:</strong>
+  <%=h @business_hour.end_day_hour %>
+</p>
+<p>
+  <strong>End Day Minute:</strong>
+  <%=h @business_hour.end_day_minute %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_business_hour_path(@business_hour) %> |
+  <%= link_to "Destroy", @business_hour, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", business_hours_path %>
+</p>

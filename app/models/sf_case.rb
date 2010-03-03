@@ -154,7 +154,24 @@ class SfCase < ActiveRecord::Base
   end
 
   def to_business_hours(deadline)
-    deadline
+    @dead_day = deadline.wday
+    @dead_hour = deadline.hour
+    @dead_minute = deadline.min
+
+    @bh = BusinessHour.find_by_weekday(deadline.wday)
+    
+    if !(@bh.workday)
+      until @bh.workday
+        deadline += 1.day
+        @bh = BusinessHour.find_by_weekday(deadline.wday)
+      end
+    end
+
+    @new_deadline = Time.zone.local(deadline.year, deadline.month, deadline.day, @bh.end_day_hour, @bh.end_day_minute, 0)
+
+    logger.info "Deadline changed to: #{@new_deadline}"
+
+    @new_deadline
   end
 
   def get_record_type_name(thiscase)
