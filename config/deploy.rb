@@ -51,6 +51,11 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/config" 
     put '', "#{shared_path}/config/billing_on_rails.yml" 
   end
+
+  desc "Overriding default start task"
+  task :start do
+    #nothing
+  end
 end
 
 after 'deploy:setup', 'deploy:create_dbyaml'

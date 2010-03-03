@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.root :controller => :queries  
+
   map.resources :sla_rules
 
   map.resources :sf_statuses
