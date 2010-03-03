@@ -32,5 +32,6 @@
 <p>
   <%= link_to "Edit", edit_query_path(@query) %> |
   <%= link_to "Destroy", @query, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", queries_path %>
+  <%= link_to "View All", queries_path %> |
+  <%= link_to "Run", run_query_path(@query) %>
 </p>
