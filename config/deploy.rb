@@ -1,4 +1,4 @@
-set :application, "SLAerator"
+set :application, "SLAerator_development"
 set :user, "app"
 set :use_sudo, false
 
