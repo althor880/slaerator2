@@ -38,6 +38,10 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>BLAH!</td>
+    <td>
+      <% form_remote_tag :url => {:controller => '/sf_cases', :action => 'analyze_all', :id => @all_case_ids}, :html => {:action => {:controller => '/sf_cases', :action => 'analyze_all'}} do %>
+        <%= submit_tag 'Analyze All' %>
+      <% end %>
+    </td>
   </tr>
 </table>

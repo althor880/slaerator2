@@ -1,0 +1,3 @@
+@sf_cases.each do |sfc|
+  page.replace_html "#{sfc.sfid}", "#{sfc.sla}"
+end
