@@ -3,10 +3,10 @@ set :user, "app"
 set :use_sudo, false
 
 set :repository,  "git@github.com:althor880/slaerator2.git"
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/var/www/#{application}_development"
 set :scm, :git
 set :git_enable_submodules, 1         # Make sure git submodules are populated
-set :branch, "production"
+set :branch, "development"
 
 set :port, 12880                      # The port you've setup in the SSH setup section
 set :location, "10.40.1.25"
