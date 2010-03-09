@@ -24,7 +24,8 @@
   <strong>Username:</strong>
   <%=h @sf_user.username %>
 </p>
-
+<p>
+	<%= link_to "Create SLAerator Account", create_user_sf_user_path(@sf_user) %>
 <p>
   <%= link_to "Edit", edit_sf_user_path(@sf_user) %> |
   <%= link_to "Destroy", @sf_user, :confirm => 'Are you sure?', :method => :delete %> |

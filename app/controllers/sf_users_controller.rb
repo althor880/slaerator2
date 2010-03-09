@@ -1,4 +1,6 @@
 class SfUsersController < ApplicationController
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
+  
   def index
     @sf_users = SfUser.all
   end
@@ -52,5 +54,16 @@ class SfUsersController < ApplicationController
     @sf_user.destroy
     flash[:notice] = "Successfully destroyed sf user."
     redirect_to sf_users_url
+  end
+  
+  def create_user
+    @sf_user = SfUser.find(params[:id])
+    unless User.find_by_email(@sf_user.email)
+      @user = User.new
+      @user.email = @sf_user.email      
+    else
+      flash[:notice] = "User has already been created!"
+      redirect_to @sf_user
+    end
   end
 end
