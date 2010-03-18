@@ -1,4 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.login "login", :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+
+  map.resources :user_sessions
+
+  map.resources :users
+
   map.resources :business_hours
   
   map.resources :sla_rules
@@ -10,10 +17,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "sf_cases/:action", :controller => 'sf_cases', :action => /[a-z]+/i
 
   map.connect "sf_cases/:sfid/:action", :controller => 'sf_cases', :action => /[a-z]+/i
-
+  
   map.resources :sf_cases
 
-  map.resources :sf_users 
+  map.resources :sf_users, :member => {:create_user => :get}
 
   map.resources :queries, :member => {:run => :get }
 

@@ -1,4 +1,5 @@
 class SfCasesController < ApplicationController
+  before_filter :require_user
   def analyze
     @sf_case = SfCase.find_by_sfid(params[:id])
   end

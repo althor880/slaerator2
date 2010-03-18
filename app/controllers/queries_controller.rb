@@ -1,6 +1,8 @@
 class QueriesController < ApplicationController
+  before_filter :require_user
+  
   def index
-    @queries = Query.all
+    @queries = Query.find_all_by_user_id(current_user.id)
   end
   
   def show
@@ -42,6 +44,7 @@ class QueriesController < ApplicationController
   def create
     @query = Query.new(params[:query])
     @query.sf_users = SfUser.find(params[:sf_user_ids]) if params[:sf_user_ids]
+    @query.user = current_user
     @query.sf_record_types = SfRecordType.find(params[:sf_record_type_ids]) if params[:sf_record_type_ids]
     if @query.save
       flash[:notice] = "Successfully created query."
