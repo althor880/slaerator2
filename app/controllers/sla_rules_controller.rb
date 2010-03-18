@@ -1,4 +1,6 @@
 class SlaRulesController < ApplicationController
+  before_filter :require_user
+  
   def index
     @sla_rules = SlaRule.all(:order => "sf_record_type_id, sf_case_priority_id, sf_case_status_id", :include => [:sf_record_type, :sf_case_priority, :sf_case_status])
   end

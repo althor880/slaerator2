@@ -1,4 +1,6 @@
 class SfRecordTypesController < ApplicationController
+  before_filter :require_user
+  
   def index
     @sf_record_types = SfRecordType.all
   end
