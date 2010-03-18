@@ -2,7 +2,7 @@ class QueriesController < ApplicationController
   before_filter :require_user
   
   def index
-    @queries = Query.all
+    @queries = Query.find_all_by_user_id(current_user.id)
   end
   
   def show
