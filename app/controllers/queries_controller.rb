@@ -1,4 +1,6 @@
 class QueriesController < ApplicationController
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
+  
   def index
     @queries = Query.all
   end
@@ -42,6 +44,7 @@ class QueriesController < ApplicationController
   def create
     @query = Query.new(params[:query])
     @query.sf_users = SfUser.find(params[:sf_user_ids]) if params[:sf_user_ids]
+    @query.user = current_user
     @query.sf_record_types = SfRecordType.find(params[:sf_record_type_ids]) if params[:sf_record_type_ids]
     if @query.save
       flash[:notice] = "Successfully created query."
