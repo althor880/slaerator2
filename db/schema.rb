@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100305194332) do
+ActiveRecord::Schema.define(:version => 20100318154748) do
 
   create_table "business_hours", :force => true do |t|
     t.integer  "weekday"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20100305194332) do
     t.datetime "lastrun"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",    :default => 1
   end
 
   create_table "queries_sf_record_types", :id => false, :force => true do |t|
