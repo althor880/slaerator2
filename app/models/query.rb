@@ -1,6 +1,7 @@
 class Query < ActiveRecord::Base
   set_primary_key :query_id
-  attr_accessible :query_id, :startdate, :enddate, :closed, :lastrun
+  attr_accessible :query_id, :startdate, :enddate, :closed, :lastrun, :user_id
+  belongs_to :user
   has_and_belongs_to_many :sf_users
   has_and_belongs_to_many :sf_record_types
 

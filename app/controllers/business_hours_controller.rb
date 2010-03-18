@@ -1,4 +1,6 @@
 class BusinessHoursController < ApplicationController
+  before_filter :require_user
+  
   def index
     @business_hours = BusinessHour.all
   end
