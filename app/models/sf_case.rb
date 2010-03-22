@@ -1,5 +1,6 @@
 class SfCase < ActiveRecord::Base
   
+  has_many :sf_case_events
   
 
   def sla

@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  created_date: 2010-03-22 14:52:15
+  type: MyString
+  field: MyString
+  old_value: MyString
+  new_value: MyString
+  slacheck: false
+  first_contact: false
+  sf_case_priority_id: 1
+  sf_case_status_id: 1
+  sf_case_id: 1
+
+two:
+  created_date: 2010-03-22 14:52:15
+  type: MyString
+  field: MyString
+  old_value: MyString
+  new_value: MyString
+  slacheck: false
+  first_contact: false
+  sf_case_priority_id: 1
+  sf_case_status_id: 1
+  sf_case_id: 1

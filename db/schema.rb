@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100318205305) do
+ActiveRecord::Schema.define(:version => 20100322185215) do
 
   create_table "business_hours", :force => true do |t|
     t.integer  "weekday"
@@ -88,6 +88,21 @@ ActiveRecord::Schema.define(:version => 20100318205305) do
   end
 
   create_table "salesforce_users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sf_case_events", :force => true do |t|
+    t.datetime "created_date"
+    t.string   "type"
+    t.string   "field"
+    t.string   "old_value"
+    t.string   "new_value"
+    t.boolean  "slacheck"
+    t.boolean  "first_contact"
+    t.integer  "sf_case_priority_id"
+    t.integer  "sf_case_status_id"
+    t.integer  "sf_case_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
