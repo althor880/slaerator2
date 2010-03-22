@@ -1,4 +1,5 @@
 class BusinessHoursController < ApplicationController
+  filter_resource_access
   before_filter :require_user
   
   def index

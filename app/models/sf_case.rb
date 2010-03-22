@@ -138,9 +138,14 @@ class SfCase < ActiveRecord::Base
 
     @slarule = SlaRule.find(:first, :conditions => { :sf_record_types => { :name => record_type_name }, :sf_case_priorities => { :name => priority }, :sf_case_statuses => { :name => status }, :first_contact => firstcontact}, :joins => [:sf_record_type, :sf_case_priority, :sf_case_status])
 
-    @increment_by = @slarule.increment_by
-    @ignore_bh = @slarule.ignore_business_hours
-
+    if @slarule
+      @increment_by = @slarule.increment_by
+      @ignore_bh = @slarule.ignore_business_hours
+    else
+      @increment_by = 0
+      @ignore_bh = false
+    end
+     
     if @increment_by != 0
       if firstcontact && !@ignore_bh
         to_business_hours(slastart + @increment_by.minutes)

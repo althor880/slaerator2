@@ -1,5 +1,7 @@
 class QueriesController < ApplicationController
+  filter_resource_access
   before_filter :require_user
+  
   
   def index
     @queries = Query.find_all_by_user_id(current_user.id)
