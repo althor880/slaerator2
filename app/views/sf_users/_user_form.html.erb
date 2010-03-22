@@ -16,5 +16,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+  <p>
+  	<%= f.label :roles%>
+	<%= select_tag "role_ids[]", options_for_select(Role.find(:all).collect { |r| [r.name, r.id] }, @user.roles.collect { |r| r.id }), {:multiple => false, :size => 3} %>
+  </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

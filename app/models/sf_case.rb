@@ -1,4 +1,6 @@
 class SfCase < ActiveRecord::Base
+  
+  
 
   def sla
     if metsla?

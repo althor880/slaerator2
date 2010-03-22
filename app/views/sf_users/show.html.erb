@@ -24,10 +24,17 @@
   <strong>Username:</strong>
   <%=h @sf_user.username %>
 </p>
-<p>
+<% if permitted_to? :create_user, :sf_users %>
+  <p>
 	<%= link_to "Create SLAerator Account", create_user_sf_user_path(@sf_user) %>
+  </p>
+<% end %>
 <p>
-  <%= link_to "Edit", edit_sf_user_path(@sf_user) %> |
-  <%= link_to "Destroy", @sf_user, :confirm => 'Are you sure?', :method => :delete %> |
+  <% if permitted_to? :edit, :sf_users %>
+    <%= link_to "Edit", edit_sf_user_path(@sf_user) %> |
+  <% end %>
+  <% if permitted_to? :destroy, :sf_users %>
+    <%= link_to "Destroy", @sf_user, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
   <%= link_to "View All", sf_users_path %>
 </p>

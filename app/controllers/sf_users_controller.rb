@@ -61,7 +61,7 @@ class SfUsersController < ApplicationController
     @sf_user = SfUser.find(params[:id])
     unless User.find_by_email(@sf_user.email)
       @user = User.new
-      @user.email = @sf_user.email      
+      @user.email = @sf_user.email
     else
       flash[:notice] = "User has already been created!"
       redirect_to @sf_user

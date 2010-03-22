@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.roles = Role.find(params[:role_ids]) if params[:role_ids]
     if @user.save
       flash[:notice] = "Registration Successful."
       redirect_to root_url

@@ -15,9 +15,21 @@
       <% end %>
     </div>
     <div id="container">
-      <%= link_to "Manage/Run Queries", queries_path %> -- 
-      <%= link_to "Manage Salesforce Users", sf_users_path %> -- 
-      <%= link_to "Manage Case/Record Types", sf_record_types_path %>
+      <% if permitted_to? :index, :queries %>
+        <%= link_to "Manage/Run Queries", queries_path %>
+	  <% end %>
+	  <% if permitted_to? :index, :sf_users %> 
+        <%= link_to "Manage Salesforce Users", sf_users_path %>
+	  <% end %>
+	  <% if permitted_to? :index, :sf_record_types %>
+        <%= link_to "Manage Case/Record Types", sf_record_types_path %>
+	  <% end %>
+	  <% if permitted_to? :index, :sla_rules %>
+	    <%= link_to "Manage SLA Rules", sla_rules_path %>
+	  <% end %>
+	  <% if permitted_to? :index, :business_hours %>
+	    <%= link_to "Manage Business Hours", business_hours_path %>
+	  <% end %>
     </div>
   </head>
   <body>
